@@ -62,13 +62,13 @@ class CustomerController extends GetxController {
         await storeCustomer.store(customer);
         isCustomerLoading.value = false;
         Get.back();
-        Get.snackbar("تم", "تم حفظ العميل الجديد",
-            backgroundColor: const Color(0xff178F49).withOpacity(0.5),
+        Get.snackbar('Success', "New client saved",
+            backgroundColor: const Color(0xff178F49).withOpacity(1),
             snackPosition: SnackPosition.BOTTOM);
       } catch (error) {
         isCustomerLoading.value = false;
-        Get.snackbar("خطأ", "$error",
-            backgroundColor: const Color(0xffec383d).withOpacity(0.5),
+        Get.snackbar("Error", "$error",
+            backgroundColor: const Color(0xffec383d).withOpacity(1),
             snackPosition: SnackPosition.BOTTOM);
       }
     }
@@ -88,11 +88,10 @@ class CustomerController extends GetxController {
     List<DropListItem> listCustomerSearch = [];
     listCustomerSearch.addAll(listCustomer.value
         .where((customer) =>
-        customer.toString().toLowerCase().contains(value.toLowerCase()))
+            customer.toString().toLowerCase().contains(value.toLowerCase()))
         .toList());
 
     listCustomerSearch.add(footer(checkIsFooter: true));
     return listCustomerSearch;
   }
-
 }

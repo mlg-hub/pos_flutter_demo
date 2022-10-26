@@ -8,7 +8,8 @@ class ProductItemWidget extends StatelessWidget {
     required this.productImage,
     required this.productName,
     required this.productPrice,
-    this.productSalePrice,required this.product,
+    this.productSalePrice,
+    required this.product,
   }) : super(key: key);
 
   final String productImage;
@@ -29,32 +30,32 @@ class ProductItemWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.network(
-              productImage,
-              width: 100,
-              height: 100,
-            ),
-          ),
-        
-        if(!product.available!)
-          Container(
-            width: double.infinity,
-            color: Colors.red,
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
-            child: Text(
-              "نفذ من المخزون",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.cairo(
-                textStyle: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 8,
-                  fontWeight: FontWeight.normal,
+          // Padding(
+          //   padding: const EdgeInsets.all(16.0),
+          //   child: Image.network(
+          //     productImage,
+          //     width: 100,
+          //     height: 100,
+          //   ),
+          // ),
+
+          if (!product.available!)
+            Container(
+              width: double.infinity,
+              color: Colors.red,
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
+              child: Text(
+                'Out of stock',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.cairo(
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 8,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
               ),
             ),
-          ),
           const Divider(
             height: 1,
             thickness: 1.5,
@@ -93,7 +94,7 @@ class ProductItemWidget extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'ريال',
+                            'BIF',
                             style: GoogleFonts.cairo(
                               textStyle: const TextStyle(
                                 decoration: TextDecoration.lineThrough,
@@ -121,7 +122,7 @@ class ProductItemWidget extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'ريال',
+                          'BIF',
                           style: GoogleFonts.cairo(
                             textStyle: const TextStyle(
                               color: Colors.black,

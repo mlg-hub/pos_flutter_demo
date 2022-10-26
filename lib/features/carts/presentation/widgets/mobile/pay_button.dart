@@ -32,7 +32,7 @@ class PayButton extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Text(
-                    'الدفع',
+                    'Paying off',
                     style: GoogleFonts.cairo(
                       textStyle: const TextStyle(
                           color: Colors.white,
@@ -51,7 +51,7 @@ class PayButton extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'ريال',
+                    'BIF',
                     style: GoogleFonts.cairo(
                       textStyle: const TextStyle(
                           color: Colors.white,

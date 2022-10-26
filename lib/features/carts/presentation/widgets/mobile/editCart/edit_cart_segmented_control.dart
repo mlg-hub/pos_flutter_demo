@@ -38,8 +38,8 @@ class EditCartSegmentedControlState extends State<EditCartSegmentedControl> {
         },
         children: <int, Widget>{
           0: _buildSegment(
-              index: 0, title: 'العدد', value: '${widget.quantity}'),
-          1: _buildSegment(index: 1, title: 'السعر', value: '${widget.price}'),
+              index: 0, title: 'Quantity', value: '${widget.quantity}'),
+          1: _buildSegment(index: 1, title: 'Price', value: '${widget.price}'),
         },
       ),
     );

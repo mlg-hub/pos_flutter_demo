@@ -23,15 +23,15 @@ import 'package:thepos/features/invoice/helper/cart_invoice_mapper.dart';
 
 class CartsController extends GetxController {
   RxList<Cart> listCarts = <Cart>[
-    Cart(keyCart: "1", cartItems: [],customer: null),
-    Cart(keyCart: "2", cartItems: [],customer: null),
-    Cart(keyCart: "3", cartItems: [],customer: null),
-    Cart(keyCart: "4", cartItems: [],customer: null),
-    Cart(keyCart: "5", cartItems: [],customer: null),
-    Cart(keyCart: "6", cartItems: [],customer: null),
-    Cart(keyCart: "7", cartItems: [],customer: null),
-    Cart(keyCart: "8", cartItems: [],customer: null),
-    Cart(keyCart: "9", cartItems: [],customer: null),
+    Cart(keyCart: "1", cartItems: [], customer: null),
+    Cart(keyCart: "2", cartItems: [], customer: null),
+    Cart(keyCart: "3", cartItems: [], customer: null),
+    Cart(keyCart: "4", cartItems: [], customer: null),
+    Cart(keyCart: "5", cartItems: [], customer: null),
+    Cart(keyCart: "6", cartItems: [], customer: null),
+    Cart(keyCart: "7", cartItems: [], customer: null),
+    Cart(keyCart: "8", cartItems: [], customer: null),
+    Cart(keyCart: "9", cartItems: [], customer: null),
   ].obs;
 
   var selectedCart = 0.obs;
@@ -71,7 +71,7 @@ class CartsController extends GetxController {
           .add(CartItem(product: product, quantity: 1));
     }
 
-    Get.snackbar("تم", "اضافة المنتج للسلة",
+    Get.snackbar('Success', 'Product added to cart',
         backgroundColor: const Color(0xff178F49).withOpacity(0.5),
         snackPosition: SnackPosition.BOTTOM);
     update();
@@ -98,12 +98,13 @@ class CartsController extends GetxController {
     final cart = listCarts.value[selectedCart.value];
 
     final invoice = CartInvoiceMapper.createInvoiceFrom(cart: cart);
+    print(invoice?.items);
     isPayLoading.value = true;
     if (invoice != null) {
       final StoreInvoice invoiceRepository = getIt<InvoiceRepository>();
       try {
         await invoiceRepository.store(invoice);
-        Get.snackbar("تم", "تم إصدار الفاتورة",
+        Get.snackbar('Success', 'Invoice issued',
             backgroundColor: const Color(0xff178F49).withOpacity(0.5),
             snackPosition: SnackPosition.BOTTOM);
         clearDataOfCart();
@@ -114,19 +115,18 @@ class CartsController extends GetxController {
     }
   }
 
-  void clearDataOfCart (){
+  void clearDataOfCart() {
     final Cart tmpCart = listCarts[selectedCart.value];
     tmpCart.cartItems.clear();
     tmpCart.customer = null;
 
     listCarts[selectedCart.value] = tmpCart;
     update();
-
   }
 
   Future clearCarts() async {
     await Get.defaultDialog(
-        title: "حذف ؟ ",
+        title: "Delete ?",
         titleStyle: GoogleFonts.cairo(
           textStyle: const TextStyle(
               color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
@@ -134,7 +134,7 @@ class CartsController extends GetxController {
         content: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "هل انت متأكد من حذف جميع العناصر في السلة  -  ${listCarts.value[selectedCart.value].keyCart}",
+            "Are you sure to delete all items in the cart -  ${listCarts.value[selectedCart.value].keyCart}",
             textAlign: TextAlign.center,
             style: GoogleFonts.cairo(
               textStyle: const TextStyle(
@@ -151,7 +151,7 @@ class CartsController extends GetxController {
             update();
           },
           child: Text(
-            "متابعة",
+            "Tracking",
             style: GoogleFonts.cairo(
               textStyle: const TextStyle(
                   color: Colors.red,
@@ -165,7 +165,7 @@ class CartsController extends GetxController {
               Get.back();
             },
             child: Text(
-              "الغاء",
+              "Cancel",
               style: GoogleFonts.cairo(
                 textStyle: const TextStyle(
                     color: Colors.grey,
@@ -208,9 +208,10 @@ class CartsController extends GetxController {
       isScrollControlled: true,
     );
   }
-  void setSelectedCustomer (DropListItem customer){
-    if(customer!=null && customer.getCustomer()!=null){
-      listCarts.value[selectedCart.value].customer=customer.getCustomer();
+
+  void setSelectedCustomer(DropListItem customer) {
+    if (customer != null && customer.getCustomer() != null) {
+      listCarts.value[selectedCart.value].customer = customer.getCustomer();
     }
     update();
   }

@@ -74,9 +74,10 @@ class CartView extends StatelessWidget {
                 }
               },
               //show selected item
-              selectedItem: cartsController.listCarts[cartsController.selectedCart.value].customer,
+              selectedItem: cartsController
+                  .listCarts[cartsController.selectedCart.value].customer,
 
-              hint: "... اختر العميل",
+              hint: "Choose customer",
               dropdownSearchDecoration: const InputDecoration(
                   border: InputBorder.none,
                   disabledBorder: InputBorder.none,
@@ -164,7 +165,7 @@ class CartView extends StatelessWidget {
     if (item == null || item.isFooter()) {
       return Container(
         child: Text(
-          "... اختر العميل",
+          'Choose customer',
           style: GoogleFonts.cairo(
             textStyle: const TextStyle(
               color: Color(0xff3e4040),
@@ -180,12 +181,13 @@ class CartView extends StatelessWidget {
     );
   }
 
-  Widget _customPopupItemBuilder(BuildContext context, DropListItem? item, bool isSelected) {
+  Widget _customPopupItemBuilder(
+      BuildContext context, DropListItem? item, bool isSelected) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 8),
       child: item!.isFooter()
           ? Text(
-              '...إضافة جديد',
+              'Add new Customer',
               style: GoogleFonts.cairo(
                 textStyle: const TextStyle(
                     color: const Color(0xff178F49),

@@ -36,7 +36,6 @@ class LoginView extends StatelessWidget {
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.name,
               decoration: const InputDecoration(labelText: 'Username'),
-              validator: controller.validateInput,
             ),
             const SizedBox(height: 12),
             TextFormField(
@@ -46,8 +45,8 @@ class LoginView extends StatelessWidget {
               enableSuggestions: false,
               autocorrect: false,
               keyboardType: TextInputType.visiblePassword,
-              decoration: const InputDecoration(labelText: 'Password'),
-              validator: controller.validateInput,
+              decoration: const InputDecoration(
+                  labelText: 'Password', hintText: "123456"),
             ),
             const SizedBox(height: 12),
             _buildLoginElevatedButton(context)
@@ -68,12 +67,10 @@ class LoginView extends StatelessWidget {
   ElevatedButton _buildElevatedButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        if (_formKey.currentState?.validate() == true) {
-          controller.login(
-            usernameTextEditingController.text,
-            passwordTextEditingController.text,
-          );
-        }
+        controller.login(
+          usernameTextEditingController.text,
+          passwordTextEditingController.text,
+        );
       },
       style: ElevatedButton.styleFrom(
         primary: Theme.of(context).primaryColor,

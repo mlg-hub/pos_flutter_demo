@@ -19,17 +19,17 @@ class EditCartProductItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
-          width: 120,
-          height: 120,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: Theme.of(context).dividerColor,
-            ),
-          ),
-          child: Image.network(productImage),
-        ),
+        // Container(
+        //   width: 120,
+        //   height: 120,
+        //   decoration: BoxDecoration(
+        //     borderRadius: BorderRadius.circular(8),
+        //     border: Border.all(
+        //       color: Theme.of(context).dividerColor,
+        //     ),
+        //   ),
+        //   child: Image.network(productImage),
+        // ),
         const SizedBox(
           width: 16,
         ),
@@ -46,9 +46,8 @@ class EditCartProductItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            _buildProductDetailsRow(title: 'الباركود', value: productBarCode),
-            _buildProductDetailsRow(
-                title: 'السعر', value: '$productPrice ريال '),
+            _buildProductDetailsRow(title: 'BarCode', value: productBarCode),
+            _buildProductDetailsRow(title: 'Price', value: '$productPrice BIF'),
           ],
         )
       ],

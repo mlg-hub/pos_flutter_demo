@@ -6,14 +6,16 @@ class HomeSilverAppBar extends SliverAppBar {
   const HomeSilverAppBar({
     Key? key,
     required this.onSearchTextChanged,
+    required this.appBartitle,
     required this.onBarCodeButtonPressed,
   }) : super(key: key);
 
   final Function(String keyword) onSearchTextChanged;
   final VoidCallback onBarCodeButtonPressed;
+  final String appBartitle;
 
   @override
-  double? get expandedHeight => 150;
+  double? get expandedHeight => 50;
 
   @override
   bool get floating => true;
@@ -30,7 +32,7 @@ class HomeSilverAppBar extends SliverAppBar {
 
   @override
   Widget? get title => Text(
-        'المبيعات',
+        appBartitle,
         style: GoogleFonts.cairo(
           textStyle: const TextStyle(
             color: Colors.white,
@@ -44,41 +46,41 @@ class HomeSilverAppBar extends SliverAppBar {
   List<Widget>? get actions =>
       <Widget>[_buildElevatedButton('assets/svg/user.svg', null, null)];
 
-  @override
-  PreferredSizeWidget? get bottom => AppBar(
-        toolbarHeight: 90,
-        shape: shape,
-        title: Column(
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                _buildElevatedButton(
-                    'assets/svg/barcode.svg', 24, onBarCodeButtonPressed),
-                Expanded(
-                  child: Container(
-                    height: 45,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(23.0),
-                      color: Colors.white,
-                    ),
-                    child: TextField(
-                      onChanged: (String value) => onSearchTextChanged(value),
-                      decoration: const InputDecoration(
-                        hintText: 'بحث',
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      );
+  // @override
+  // PreferredSizeWidget? get bottom => AppBar(
+  //       toolbarHeight: 90,
+  //       shape: shape,
+  //       title: Column(
+  //         children: <Widget>[
+  //           Row(
+  //             crossAxisAlignment: CrossAxisAlignment.start,
+  //             children: <Widget>[
+  //               _buildElevatedButton(
+  //                   'assets/svg/barcode.svg', 24, onBarCodeButtonPressed),
+  //               Expanded(
+  //                 child: Container(
+  //                   height: 45,
+  //                   decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.circular(23.0),
+  //                     color: Colors.white,
+  //                   ),
+  //                   child: TextField(
+  //                     onChanged: (String value) => onSearchTextChanged(value),
+  //                     decoration: const InputDecoration(
+  //                       hintText: 'Search',
+  //                       prefixIcon: Icon(
+  //                         Icons.search,
+  //                         color: Colors.white,
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //         ],
+  //       ),
+  //     );
 
   @override
   ShapeBorder? get shape => const RoundedRectangleBorder(

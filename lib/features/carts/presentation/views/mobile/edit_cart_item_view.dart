@@ -36,7 +36,7 @@ class EditCartItemViewState extends State<EditCartItemView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 16),
       color: Colors.white,
       child: Column(
         children: <Widget>[
@@ -56,7 +56,7 @@ class EditCartItemViewState extends State<EditCartItemView> {
             textInputAction: TextInputAction.done,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
-              labelText: _selectedSegmentIndex == 0 ? 'الكمية' : 'السعر',
+              labelText: _selectedSegmentIndex == 0 ? 'Quantity' : 'Price',
             ),
           ),
           Expanded(
@@ -77,7 +77,7 @@ class EditCartItemViewState extends State<EditCartItemView> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         _buildElevatedButton(
-          title: 'تحديث',
+          title: 'Confirm',
           color: Theme.of(context).primaryColor,
           onPressed: _update,
         ),
@@ -85,7 +85,7 @@ class EditCartItemViewState extends State<EditCartItemView> {
           width: 12,
         ),
         _buildElevatedButton(
-          title: 'حذف',
+          title: 'Cancel',
           color: Colors.red,
           onPressed: () {},
         ),

@@ -15,16 +15,16 @@ class CartFloatingActionButton extends FloatingActionButton {
   Widget? get child => Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text(
-            '$numberOfOpenedCart',
-            style: GoogleFonts.cairo(
-              textStyle: const TextStyle(
-                color: Colors.black,
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
+          // Text(
+          //   '$numberOfOpenedCart',
+          //   style: GoogleFonts.cairo(
+          //     textStyle: const TextStyle(
+          //       color: Colors.black,
+          //       fontSize: 24,
+          //       fontWeight: FontWeight.w700,
+          //     ),
+          //   ),
+          // ),
           SvgPicture.asset(
             'assets/svg/go_cart.svg',
             height: 24,

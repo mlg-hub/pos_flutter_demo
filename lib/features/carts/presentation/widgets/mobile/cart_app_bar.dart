@@ -5,7 +5,7 @@ class CartAppBar extends AppBar {
   CartAppBar({Key? key}) : super(key: key);
   @override
   Widget? get title => Text(
-        'السلة',
+        'Cart',
         style: GoogleFonts.cairo(
           textStyle: const TextStyle(
             color: Colors.white,
